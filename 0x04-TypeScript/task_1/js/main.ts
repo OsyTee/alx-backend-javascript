@@ -1,5 +1,29 @@
-function printTeacher(firstName, lastName) {
-  return firstName.charAt(0) + '. ' + lastName;
+interface IStudent {
+  firstName: string;
+  lastName: string;
 }
 
-console.log(printTeacher("John", "Doe"));  // Output: J. Doe
+interface IStudentClass {
+  new (firstName: string, lastName: string): StudentClass;
+}
+
+class StudentClass implements IStudent {
+  firstName: string;
+  lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
+
+export { StudentClass, IStudent, IStudentClass };
+
